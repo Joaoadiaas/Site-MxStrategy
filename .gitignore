@@ -1,0 +1,28 @@
+# Arquivos pessoais / documentação local (não precisam ir pro site)
+LEIA-ME.txt
+COMO-PUBLICAR.txt
+COMO-PUBLICAR-NO-GIT.txt
+
+# Arquivos de teste / sobras
+teste.txt
+teste*.txt
+test.txt
+*.bak
+*.old
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.bak
+*.tmp
+
+# Placeholders
+.gitkeep
+**/.gitkeep
