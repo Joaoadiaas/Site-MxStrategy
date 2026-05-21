@@ -615,3 +615,67 @@ ul { list-style: none; padding: 0; margin: 0; }
   .method-overview { grid-template-columns: 1fr; }
   .method-detail-list { gap: 40px; }
 }
+
+/* =========================================================
+   CARROSSEL DE CLIENTES (infinito, pausa no hover)
+   ========================================================= */
+.client-carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.client-track {
+  display: flex;
+  width: max-content;
+  animation: scrollClients 50s linear infinite;
+  will-change: transform;
+}
+.client-carousel:hover .client-track {
+  animation-play-state: paused;
+}
+.client-slide {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 130px;
+  margin: 0 18px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 22px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.client-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: filter var(--transition), opacity var(--transition), transform var(--transition);
+}
+.client-slide:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--red);
+}
+.client-slide:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+@keyframes scrollClients {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .client-slide { width: 160px; height: 110px; margin: 0 12px; padding: 18px; }
+  .client-track { animation-duration: 40s; }
+}
